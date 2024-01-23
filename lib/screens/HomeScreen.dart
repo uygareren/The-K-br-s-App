@@ -73,7 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text(
           "The Kıbrıs",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
@@ -190,7 +189,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   border: Border(
                     bottom: BorderSide(
                       color: _selectedCategoryIndex == index
-                          ? Colors.black
+                          ? Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white // White border for dark theme
+                              : Colors.black // Black border for light theme
                           : Colors.transparent,
                       width: 3,
                     ),
@@ -303,7 +304,6 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Name',
-                fillColor: Colors.white,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -315,7 +315,6 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Surname',
-                fillColor: Colors.white,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -327,7 +326,6 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Mail',
-                fillColor: Colors.white,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -339,12 +337,10 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Phone',
-                fillColor: Colors.white,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
-                  borderSide:
-                      BorderSide(color: Colors.white, style: BorderStyle.solid),
+                  borderSide: BorderSide(style: BorderStyle.solid),
                 ),
               ),
             ),
@@ -355,10 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: const Text(
                 'Send',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ],

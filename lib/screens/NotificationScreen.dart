@@ -39,15 +39,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
       leading: GestureDetector(
         onTap: () {
           print("left arrow tıklandı.");
         },
-        child: const Icon(
-          Icons.keyboard_arrow_left,
-          size: 26,
-        ),
       ),
     );
   }
@@ -72,14 +67,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Padding(
       padding: const EdgeInsets.only(top: 4, bottom: 10),
       child: Container(
-        decoration: BoxDecoration(
-            color: Color.fromARGB(255, 253, 253, 253),
-            boxShadow: [
-              BoxShadow(
-                  color: const Color(0xff1D1617).withOpacity(0.11),
-                  blurRadius: 3,
-                  spreadRadius: 0.5)
-            ]),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: const Color(0xff1D1617).withOpacity(0.11),
+              blurRadius: 3,
+              spreadRadius: 0.5)
+        ]),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
           child: Row(
@@ -106,17 +99,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       SizedBox(height: 5),
                       Text(
                         formattedDate,
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(),
                       ),
                       SizedBox(height: 10),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
                           notification.category_name,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.red),
+                          style: TextStyle(fontWeight: FontWeight.w900),
                         ),
                       )
                     ],

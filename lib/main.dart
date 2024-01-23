@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:the_kibris/bloc/theme_bloc.dart';
 import 'package:the_kibris/screens/HomeScreen.dart';
 import 'package:the_kibris/screens/NotificationScreen.dart';
 import 'package:the_kibris/screens/SearchScreen.dart';
 import 'package:the_kibris/screens/SettingsScreen.dart';
+import 'package:the_kibris/theme/theme.dart';
 import 'package:the_kibris/utils/utils.dart';
 
 void main() {
@@ -15,14 +18,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return BlocProvider<ThemeBloc>(
+      create: (context) => ThemeBloc(),
+      child: BlocBuilder<ThemeBloc, ThemeMode>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: lightTheme,
+            themeMode: state,
+            darkTheme: darkTheme,
+            home: const MyHomePage(),
+          );
+        },
       ),
-      home: const MyHomePage(),
     );
   }
 }
@@ -50,8 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: screens[_currentIndex],
       bottomNavigationBar: GNav(
         gap: 10,
-        color: Colors.black,
-        activeColor: Colors.black,
         textStyle: const TextStyle(fontWeight: FontWeight.bold),
         selectedIndex: _currentIndex,
         onTabChange: (index) {

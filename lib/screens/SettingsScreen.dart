@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:the_kibris/bloc/theme_bloc.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -7,27 +9,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late bool _isLight;
-
-  @override
-  void initState() {
-    super.initState();
-    _isLight = true; // Initialize _isLight here
-    _loadTheme();
-  }
-
-  Future<void> _loadTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isLight = prefs.getBool('isLight') ?? false;
-    });
-  }
-
-  Future<void> _saveTheme(bool isLight) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isLight', isLight);
-  }
-
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -73,10 +54,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             GestureDetector(
               onTap: () {
                 print("theme tıklandı");
-                setState(() {
-                  _isLight = !_isLight;
-                  _saveTheme(_isLight);
-                });
               },
               child: Container(
                 width: (width * 6.5) / 10,
@@ -89,21 +66,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Icon(Icons.nights_stay_outlined),
                     SizedBox(width: 8),
-                    const Text(
-                      "Theme",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      ),
+                    BlocBuilder<ThemeBloc, ThemeMode>(
+                      builder: (context, themeState) {
+                        return Text(
+                          themeState == ThemeMode.dark
+                              ? "Dark Mode"
+                              : "Light Mode",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        );
+                      },
                     ),
-                    Switch(
-                        value: _isLight,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _isLight = value;
-                            _saveTheme(_isLight);
-                          });
-                        })
+                    BlocBuilder<ThemeBloc, ThemeMode>(
+                      builder: (context, themeState) {
+                        return Switch(
+                          value: themeState == ThemeMode.dark,
+                          onChanged: (bool value) {
+                            context.read<ThemeBloc>().add(ThemeChanged(value));
+                          },
+                        );
+                      },
+                    )
                   ],
                 ),
               ),
@@ -121,15 +106,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
       leading: GestureDetector(
         onTap: () {
           print("left arrow tıklandı.");
         },
-        child: const Icon(
-          Icons.keyboard_arrow_left,
-          size: 26,
-        ),
       ),
     );
   }

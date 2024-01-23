@@ -28,7 +28,6 @@ class _SearchScreenState extends State<SearchScreen> {
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.search),
             hintText: "Search News..",
-            fillColor: HexColor("#f7f5f7"),
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
