@@ -12,7 +12,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    _isLight = false; // Initialize _isLight here
+    _isLight = true; // Initialize _isLight here
     _loadTheme();
   }
 
@@ -89,7 +89,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Icon(Icons.nights_stay_outlined),
                     SizedBox(width: 8),
-                    Text(
+                    const Text(
                       "Theme",
                       style: TextStyle(
                         fontSize: 16,
@@ -98,11 +98,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     Switch(
                         value: _isLight,
-                        inactiveThumbColor: Colors.white,
-                        inactiveTrackColor:
-                            const Color.fromARGB(255, 33, 33, 33),
-                        activeTrackColor:
-                            const Color.fromARGB(255, 89, 172, 91),
                         onChanged: (bool value) {
                           setState(() {
                             _isLight = value;
