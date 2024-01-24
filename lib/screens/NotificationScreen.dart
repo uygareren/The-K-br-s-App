@@ -69,7 +69,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       child: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
-              color: const Color(0xff1D1617).withOpacity(0.11),
+              color: Color.fromARGB(255, 158, 157, 157).withOpacity(0.11),
               blurRadius: 3,
               spreadRadius: 0.5)
         ]),

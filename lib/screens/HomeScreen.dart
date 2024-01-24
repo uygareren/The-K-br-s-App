@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           "The Kıbrıs",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 24),
         ),
       ),
       body: SingleChildScrollView(
@@ -190,8 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     bottom: BorderSide(
                       color: _selectedCategoryIndex == index
                           ? Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white // White border for dark theme
-                              : Colors.black // Black border for light theme
+                              ? Colors.white
+                              : Colors.black
                           : Colors.transparent,
                       width: 3,
                     ),
@@ -241,14 +241,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.only(top: 4, bottom: 4),
       child: Container(
-        decoration: BoxDecoration(
-            color: Color.fromARGB(255, 253, 253, 253),
-            boxShadow: [
-              BoxShadow(
-                  color: const Color(0xff1D1617).withOpacity(0.11),
-                  blurRadius: 3,
-                  spreadRadius: 0.5)
-            ]),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: Color.fromARGB(255, 158, 157, 157).withOpacity(0.11),
+              blurRadius: 3,
+              spreadRadius: 0.5)
+        ]),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
           child: Row(

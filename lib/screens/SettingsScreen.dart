@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:the_kibris/bloc/theme_bloc.dart';
+import 'package:the_kibris/modalScreens/changeLanguage.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -9,6 +10,13 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  void _showLanguageBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const ChangeLanguage(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -23,7 +31,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Padding(padding: EdgeInsets.only(top: 25)),
             GestureDetector(
               onTap: () {
-                // _showLanguageBottomSheet(context);
+                _showLanguageBottomSheet(context);
               },
               child: Container(
                 width: (width * 6.5) / 10,
@@ -64,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   mainAxisSize: MainAxisSize
                       .min, // Set mainAxisSize to minimize vertical space
                   children: [
-                    Icon(Icons.nights_stay_outlined),
+                    Icon(Icons.light_mode_sharp),
                     SizedBox(width: 8),
                     BlocBuilder<ThemeBloc, ThemeMode>(
                       builder: (context, themeState) {
