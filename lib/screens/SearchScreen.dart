@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -27,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
         child: TextField(
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.search),
-            hintText: "Search News..",
+            hintText: "search_news".tr(),
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),

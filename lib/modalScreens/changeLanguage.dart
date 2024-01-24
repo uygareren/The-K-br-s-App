@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +31,16 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
     await _prefs.setString('selectedLanguageId', id);
   }
 
+  void _changeLanguage() {
+    var id = _getSelectedLanguage();
+
+    if (id == "1") {
+      context.setLocale(Locale('tr', 'TR'));
+    } else if (id == "2") {
+      context.setLocale(Locale('en', 'US'));
+    }
+  }
+
   String _getSelectedLanguage() {
     return _prefs.getString('selectedLanguageId') ?? '';
   }
@@ -57,6 +68,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                 return GestureDetector(
                   onTap: () {
                     _saveSelectedLanguage(language.id);
+                    _changeLanguage();
                     setState(() {});
                   },
                   child: Row(
@@ -75,11 +87,14 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                             if (isSelected)
                               BlocBuilder<ThemeBloc, ThemeMode>(
                                 builder: (context, state) {
-                                  return Icon(
-                                    Icons.check,
-                                    color: state == ThemeMode.dark
-                                        ? Colors.green
-                                        : Colors.black,
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Icon(
+                                      Icons.check,
+                                      color: state == ThemeMode.dark
+                                          ? Colors.green
+                                          : Colors.black,
+                                    ),
                                   );
                                 },
                               ),

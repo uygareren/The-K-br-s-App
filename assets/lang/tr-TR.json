@@ -1,0 +1,24 @@
+{
+    "popular_news":"Popüler Haberler",
+    "last_news": "Son Haberler",
+    "contact_us": "İletişime Geç",
+    "name": "İsim",
+    "surname": "Soy İsim",
+    "email": "Email",
+    "phone":"Telefon",
+    "send": "Gönder",
+    
+    "home": "Anasayfa",
+    "search": "Ara",
+    "notification": "Bildirimler",
+    "settings":"Ayarlar",
+
+    "search_news": "Haber Ara..",
+
+    "notification_title": "Bildirimler",
+
+    "change_language": "Dil Değiştir",
+    "light_mode": "Açık Mod",
+    "dark_mode": "Kapalı Mod"
+
+}

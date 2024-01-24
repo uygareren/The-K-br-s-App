@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,58 +35,70 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _showLanguageBottomSheet(context);
               },
               child: Container(
-                width: (width * 6.5) / 10,
+                width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
                 decoration: const BoxDecoration(color: Colors.transparent),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize
                       .min, // Set mainAxisSize to minimize vertical space
                   children: [
-                    Icon(Icons.language),
-                    SizedBox(width: 8),
-                    Text(
-                      "Change Language",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15.0),
+                      child: Row(
+                        children: [
+                          Icon(Icons.language),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "change_language".tr(),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Icon(Icons.arrow_right_alt_rounded),
                   ],
                 ),
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             GestureDetector(
               onTap: () {
                 print("theme tıklandı");
               },
               child: Container(
-                width: (width * 6.5) / 10,
+                width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
                 decoration: const BoxDecoration(color: Colors.transparent),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   mainAxisSize: MainAxisSize
                       .min, // Set mainAxisSize to minimize vertical space
                   children: [
-                    Icon(Icons.light_mode_sharp),
-                    SizedBox(width: 8),
-                    BlocBuilder<ThemeBloc, ThemeMode>(
-                      builder: (context, themeState) {
-                        return Text(
-                          themeState == ThemeMode.dark
-                              ? "Dark Mode"
-                              : "Light Mode",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        );
-                      },
+                    Row(
+                      children: [
+                        Icon(Icons.light_mode_sharp),
+                        SizedBox(width: 8),
+                        BlocBuilder<ThemeBloc, ThemeMode>(
+                          builder: (context, themeState) {
+                            return Text(
+                              themeState == ThemeMode.dark
+                                  ? "dark_mode".tr()
+                                  : "light_mode".tr(),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                     BlocBuilder<ThemeBloc, ThemeMode>(
                       builder: (context, themeState) {
@@ -109,8 +122,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   AppBar _appbar() {
     return AppBar(
-      title: const Text(
-        "Settings",
+      title: Text(
+        "settings".tr(),
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       centerTitle: true,

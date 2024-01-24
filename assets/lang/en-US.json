@@ -1,0 +1,23 @@
+{
+    "popular_news": "Popular News",
+    "last_news": "Latest News",
+    "contact_us": "Contact Us",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "phone": "Phone",
+    "send": "Send",
+    
+    "home": "Home",
+    "search": "Search",
+    "notification": "Notifications",
+    "settings": "Settings",
+
+    "search_news": "Search News...",
+
+    "notification_title": "Notifications",
+
+    "change_language": "Change Language",
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode"
+}

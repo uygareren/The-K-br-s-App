@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:the_kibris/models/NotificationModel.dart';
@@ -34,8 +35,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   AppBar _appbar() {
     return AppBar(
-      title: const Text(
-        "Notifications",
+      title: Text(
+        "notification_title".tr(),
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       centerTitle: true,

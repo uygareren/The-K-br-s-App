@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:the_kibris/models/newsCategoryModel.dart';
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "The Kıbrıs",
           style: TextStyle(fontWeight: FontWeight.normal, fontSize: 24),
         ),
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: EdgeInsets.fromLTRB(25, 25, 0, 0),
                 child: Text(
-                  "Popular News",
+                  "popular_news".tr(),
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
                 ),
               ),
@@ -96,12 +97,12 @@ class _HomeScreenState extends State<HomeScreen> {
             // Carousel Slider
             newsSlider(),
             // Last News text
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(25, 25, 0, 25),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Last News",
+                  "last_news".tr(),
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -115,12 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? CircularProgressIndicator() // Veri çekilirken yükleniyor göstergesi göster
                   : _buildNewsList(), // Veri mevcutsa haber listesini oluştur
             ),
-            const Padding(
+            Padding(
                 padding: EdgeInsets.fromLTRB(25, 25, 0, 25),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Contact Us",
+                      "contact_us".tr(),
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -301,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Name',
+                labelText: 'name'.tr(),
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -312,7 +313,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Surname',
+                labelText: 'surname'.tr(),
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -323,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Mail',
+                labelText: 'email'.tr(),
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -334,7 +335,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Phone',
+                labelText: 'phone'.tr(),
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -347,8 +348,8 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 // Handle button press
               },
-              child: const Text(
-                'Send',
+              child: Text(
+                'send'.tr(),
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),

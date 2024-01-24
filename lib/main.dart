@@ -8,9 +8,21 @@ import 'package:the_kibris/screens/SearchScreen.dart';
 import 'package:the_kibris/screens/SettingsScreen.dart';
 import 'package:the_kibris/theme/theme.dart';
 import 'package:the_kibris/utils/utils.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+        supportedLocales: [Locale('tr', 'TR'), Locale('en', 'US')],
+        path: 'assets/lang',
+        saveLocale: true,
+        fallbackLocale: Locale('tr', 'TR'),
+        child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,6 +35,9 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeBloc, ThemeMode>(
         builder: (context, state) {
           return MaterialApp(
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: lightTheme,
@@ -66,22 +81,22 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
-        tabs: const [
+        tabs: [
           GButton(
             icon: Icons.home,
-            text: "Home",
+            text: "home".tr(),
           ),
           GButton(
             icon: Icons.search,
-            text: "Search",
+            text: "search".tr(),
           ),
           GButton(
             icon: Icons.notifications,
-            text: "Notifications",
+            text: "notification".tr(),
           ),
           GButton(
             icon: Icons.settings,
-            text: "Settings",
+            text: "settings".tr(),
           ),
         ],
       ),

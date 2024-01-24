@@ -9,7 +9,7 @@ class ChangeLanguageModal {
     List<ChangeLanguageModal> languageNames = [];
 
     languageNames.add(ChangeLanguageModal(
-        "1", "assets/icons/turkey-flag-icon.svg", "Türkiye"));
+        "1", "assets/icons/turkey-flag-icon.svg", "Türkçe"));
     languageNames.add(ChangeLanguageModal(
         "2", "assets/icons/Flag_of_the_United_States.svg", "English"));
 
